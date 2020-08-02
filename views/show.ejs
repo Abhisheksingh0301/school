@@ -1,0 +1,97 @@
+<%- include('header'); -%>
+<title><%= title %></title>   
+<link rel='stylesheet' href='/stylesheets/style.css'>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<h1 id="myHeader"><%= title %></h1>
+        <table>
+            <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td>:</td>
+                    <td><%= student_masters._id %></td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td><%= student_masters.name%></td>
+                </tr>
+                <tr>
+                    <td>Father's Name</td>
+                    <td>:</td>
+                    <td><%= student_masters.fname %></td>
+                </tr>
+                <tr>
+                    <td>Mother's Name</td>
+                    <td>:</td>
+                    <td><%= student_masters.mname %></td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td>:</td>
+                    <td><%= student_masters.mob %></td>
+                </tr>
+                <tr>
+                    <td>Roll</td>
+                    <td>:</td>
+                    <td><%= student_masters.roll %></td>
+                </tr>
+                <tr>
+                    <td>Class</td>
+                    <td>:</td>
+                    <td><%= student_masters.class %></td>
+                </tr>
+                <tr>
+                    <td>Section</td>
+                    <td>:</td>
+                    <td><%= student_masters.section %></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td>:</td>
+                    <td><%= student_masters.dob %></td>
+                </tr>
+                <tr>
+                    <td>Sex</td>
+                    <td>:</td>
+                    <td><%= student_masters.sex %></td>
+                </tr>
+                <tr>
+                    <td>Concession</td>
+                    <td>:</td>
+                    <td><%= student_masters.concession %></td>
+                </tr>
+                <tr>
+                    <td>Transport</td>
+                    <td>:</td>
+                    <td><%= student_masters.transport %></td>
+                </tr>
+                <tr>
+                    <td>Address Line1</td>
+                    <td>:</td>
+                    <td><%= student_masters.address.line1 %></td>
+                </tr>
+                <tr>
+                    <td>Address Line2</td>
+                    <td>:</td>
+                    <td><%= student_masters.address.line2 %></td>
+                </tr>
+                <tr>
+                    <td>District</td>
+                    <td>:</td>
+                    <td><%= student_masters.address.district %></td>
+                </tr>
+                <tr>
+                    <td>Pin code</td>
+                    <td>:</td>
+                    <td><%= student_masters.address.pin %></td>
+                </tr>
+                <tr>
+                    <td>Entry Date</td>
+                    <td>:</td>
+                    <td><%= student_masters.Entry_Date %></td>
+                </tr>
+            </tbody>
+        </table>
+        <%- include('footer'); -%>

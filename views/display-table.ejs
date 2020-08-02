@@ -1,0 +1,83 @@
+<%- include('header'); -%>
+<% if(student_masters.length>0){ %>
+    <html>
+    <head>
+        <title><%= title %></title>   
+        <link rel='stylesheet' href='/stylesheets/style.css'>
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <script src="/js/jquery.js"></script>
+        <script src="/js/bootstrap.min.js"></script>    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+              $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
+            });
+            </script>
+    </head>
+        <body>
+            <div class="container-fluid">
+            <h1 id="myHeader"><%= headertext %></h1>
+            <hr>
+            <input id="myInput" type="text" placeholder="Search.." class="form-control">
+            <br>
+            <table border="1" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Sl</th>
+                        <th>Name</th>
+                        <th>Father's name</th>
+                        <th>Mobile</th>
+                        <th>Roll</th>
+                        <th>Class</th>
+                        <th>Sec</th>
+                        <th>Date of Birth</th>
+                        <th>Sex</th>
+                        <th>Address</th>   
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                <tr>
+                    <% for (var i=0; i<student_masters.length; i++){ %>
+                    <td><%= i+1 %></td>
+                    <td><%= student_masters[i].name %></td>
+                    <td><%= student_masters[i].fname %></td>
+                    <td><%= student_masters[i].mob %></td>
+                    <td><%= student_masters[i].roll %></td>
+                    <td><%= student_masters[i].class %></td>
+                    <td><%= student_masters[i].section %></td>
+                    <td><%= student_masters[i].dob %></td>
+                    <td><%= student_masters[i].sex %></td>
+                    <td><%= student_masters[i].address.line1 + ' ' 
+                        + student_masters[i].address.line2 +' '
+                        + student_masters[i].address.district + ' ' 
+                        + student_masters[i].address.pin %>
+                    </td>
+                    <td>
+                        <a href='/edit/<%= student_masters[i]._id %>'>Edit</a> | 
+                        <a href='/delete/<%= student_masters[i]._id %>'>Delete</a> |
+                        <a href='/show/<%= student_masters[i]._id %>'>Show</a> |
+                        <a href='/qrcode/<%= student_masters[i]._id %>' target="_blank">QRCode</a> 
+                       
+
+                    </td>
+                </tr>
+                
+                <% } %>
+            </tbody>
+            </table>
+        </div>
+            </body>
+        </html>
+
+<% } else { %>
+    No records found
+<% } %>
+
+<%- include('footer'); -%>

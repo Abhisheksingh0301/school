@@ -1,0 +1,13 @@
+<%- include('header'); -%>
+<title><%= title %></title>   
+<link rel='stylesheet' href='/stylesheets/style.css'>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<!-- <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=<%= student_masters.name %>" 
+alt="no image"> -->
+<h1 id="myHeader">Student record of <%= student_masters.name %></h1>
+<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<%= ttx %>" 
+alt="no image">
+
+<%- include('footer'); -%>
