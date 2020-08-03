@@ -1,1 +1,1 @@
-web: npm start
+web:set DEBUG=schoolapp:* & npm start
