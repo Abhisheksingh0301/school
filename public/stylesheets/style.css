@@ -3,8 +3,9 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 #h1header {
-  font-family: 'Times New Roman', Times, serif;
-  font-size:60px;
+  /* font-family: 'Times New Roman', Times, serif; */
+  font-family: 'Lemonada', cursive;
+  font-size:50px;
   font-weight: bold;
   text-shadow:2px 2px gold;
   color: darkred;
@@ -22,6 +23,19 @@ body {
   text-decoration: underline;
   text-shadow: 2px 2px blue;
   /* text-decoration-color: red; */
+}
+
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: DarkSalmon;
+  color: white;
+  /* position: fixed; 
+  left: 0;
+  bottom: 0;*/
+  width: 100%;
+  display:flex;
+  margin:auto;
 }
 
 a {

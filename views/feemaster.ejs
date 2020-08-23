@@ -1,0 +1,61 @@
+<%- include('header'); -%>
+<title><%= title %></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel='stylesheet' href='/stylesheets/style.css'>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<h1 id="myHeader"><%= title %></h1>
+<div style="width: 50%; float:left; margin:10px">
+    <% if(fee_masters.length>0){ %>
+        <table border="1" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Type of Fees</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+                <tr>
+                    <% for (var i=0; i<fee_masters.length; i++){ %>
+                    <td><%= fee_masters[i].fee_type %></td>
+                    <td><%= fee_masters[i].amount %></td>
+                    <td>
+                        <a href='/feemstedit/<%= fee_masters[i]._id %>'><i class="fa fa-edit"></i></a> | 
+                        <a href='/feemstdel/<%= fee_masters[i]._id %>'><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>            
+                <% } %>
+            </tbody>
+        </table>
+    <% } else { %>
+        No records found
+    <% } %>
+</div>
+
+<div style="width: 30%; float:right;  margin:10px">
+    <form method="POST">
+        <div class="container-fluid">
+            <table border="1">
+                <tr>
+                    <th colspan="2">Add new records</th>
+                </tr>
+                <tr><td><label for="txtfeetype">Fee type</label></td>
+                    <td><input type="text" name="txtfeetype" id="txtfeetype" required class="form-control" autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <td><label for="txtamount">Amount</label></td>
+                    <td><input type="number" name="txtamount" id="txtamount" required class="form-control"></td>
+                </tr>
+                <tr>
+                    <!-- <td colspan="2"><input type="submit" class="btn btn-success" value="Add"></td> -->
+                    <td colspan="2"><button type="submit" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add</button></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+<div style="clear: both;"></div>
+<%- include('footer'); -%>

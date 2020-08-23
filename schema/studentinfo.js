@@ -10,7 +10,7 @@ var studinfo= new  Schema({
     roll:String,
     class:String,
     section:String,
-    dob:String,
+    dob:Date,
     sex:String,
     concession:Number,
     transport:false,

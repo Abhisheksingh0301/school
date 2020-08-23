@@ -1,0 +1,138 @@
+<%- include('header'); -%>
+<title><%= title %></title>   
+<link rel='stylesheet' href='/stylesheets/style.css'>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+
+<form action="/updtstudent/" method="POST">
+    <div class="container-fluid">
+        <h1 id="myHeader"><%= headertext %></h1>
+        <hr>
+        <input type="hidden" name="id" value="<%= records._id %>">
+    <table>
+        <tr>
+            <td><label for="txtname">Name:</label></td>
+            <td colspan="3">
+                <input id="txtname" type="text" value="<%= records.name %>" placeholder="Enter name" name="name" class="form-control" required>
+            </td>
+        </tr>        
+        <tr>
+            <td><label for="txtfname">Father's Name:</label></td>
+            <td colspan="3">
+                <input id="txtfname" type="text" value="<%= records.fname %>" placeholder="Enter Father's name" name="fname" class="form-control" required>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="txtmname">Mother's Name:</label></td>
+            <td colspan="3">
+                <input id="txtmname" type="text" value="<%= records.mname %>" placeholder="Enter Mother's name" name="mname" class="form-control" required>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="txtmob">Mobile:</label></td>
+            <td>
+                <input id="txtmob" type="text" value="<%= records.mob %>" placeholder="Enter mobile number" name="mob" class="form-control" required>
+            </td>
+            <td><label for="txtroll">Roll:</label></td>
+            <td>
+                <input id="txtroll" type="text" value="<%= records.roll %>" placeholder="Enter roll" name="roll" class="form-control" required>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="txtclass">Class:</label></td>            
+            <td>
+                <select id="cl" name="class_mst" class="form-control">
+                    <option value="0"> Please select</option>
+                    <% for (var i=0; i<class_masters.length; i++){ %>
+                        <option value= '<%= class_masters[i].class %>' <% if(records.class ==class_masters[i].class){ %> selected <% } %>> <%= class_masters[i].class %></option>
+                    <% } %>
+                </select>
+                <!-- <% if(records.etype =="Hourly"){ %> selected <% } %> -->
+            </td>
+        <!-- </tr>
+        <tr> -->
+            <td><label for="txtsec">Section:</label></td>
+            <td>
+                <input id="txtsec" type="text" value="<%= records.section %>" placeholder="Enter section" name="section" class="form-control" required>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="datepicker">DOB:</label></td>
+            <td>
+                <!-- <input id="txtage" type="number" placeholder="Enter age" name="age" class="form-control" required> -->
+                <input id="datepicker" name="dob" value="<%= moment(records.dob).format( 'YYYY-MM-DD') %>" 
+                type="date" class="form-control" required>
+            </td>
+            <td><label for="tt1">Transport:</label></td>
+            <td>
+                <input id="tt1" type="radio" name="transport" value="true" <% if(records.transport =="true"){ %> checked  <% } %>> Yes &nbsp;&nbsp;
+                <input id="tt2" type="radio" name="transport" value="false" <% if(records.transport =="false"){ %> checked <% } %>> No
+            </td>
+                        
+        </tr>
+        <tr>
+            <td><label for="txtadd1">Address:</label></td>
+            <td colspan="2">
+                <input id="txtadd1" type="text" value="<%= records.address.line1 %>" placeholder="Address Line1" name="line1" class="form-control" required>
+            </td>
+        <!-- </tr>
+        <tr> -->
+            <!-- <td><label for="txtadd2">Address2:</label></td> -->
+            <td>
+                <input id="txtadd2" type="text" value="<%= records.address.line2 %>" placeholder="Address Line2" name="line2" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <td><label for="txtadd3">District:</label></td>
+            <td>
+                <input id="txtadd3" type="text" value="<%= records.address.district %>" placeholder="District" name="district" class="form-control" required>
+            </td>
+        <!-- </tr>
+        <tr> -->
+            <td><label for="txtadd4">Pincode</label></td>
+            <td>
+                <input id="txtadd4" type="text" value="<%= records.address.pin %>" placeholder="Pincode" name="pin" class="form-control" required>
+            </td>
+        </tr>
+        <tr>
+            <td>Sex:</td>
+            <td>
+                <input type="radio" name="usex" value="Male" <% if(records.sex=="Male") { %> checked <% } %>> Male &nbsp;&nbsp;
+                <input type="radio" name="usex" value="Female" <% if(records.sex=="Female") { %> checked <% } %>> Female
+            </td>
+            <td><label for="txtcons">Concession:</label></td>
+            <td>
+                <input id="txtcons" type="number" value="<%= records.concession %>" step="0.5" placeholder="Enter concession (%)" 
+                value="0.0" name="concession" class="form-control" required>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Update</button>
+                <!-- <button type="submit" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span> Add
+                </button> -->
+            </td>
+            <td colspan="3">
+                <input type="button" class="btn btn-primary" value="Display" 
+                onclick="window.location='../display'">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><h3><%= updtmsg %></h3></td>
+        </tr>
+    </table>
+</div>
+</form>
+<!-- <button type="button" class="btn btn-info">
+    <span class="glyphicon glyphicon-search"></span> Search
+  </button> -->
+<%- include('footer'); -%>

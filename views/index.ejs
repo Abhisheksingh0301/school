@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
+
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-  </head>
+      <link rel='stylesheet' href='/stylesheets/style.css'>
+      <link href="/css/bootstrap.min.css" rel="stylesheet">
+      <script src="/js/jquery.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
+
   <%- include('header'); -%>
-  <body>
-    <h1><%= title %></h1>
+    <h1 id="myHeader"><%= title %></h1> <hr>
     <p>Welcome to <%= title %></p>
-  </body>
-</html>
+    <%- include('footer'); -%>

@@ -3,6 +3,7 @@
     <html>
     <head>
         <title><%= title %></title>   
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel='stylesheet' href='/stylesheets/style.css'>
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <script src="/js/jquery.js"></script>
@@ -52,7 +53,8 @@
                     <td><%= student_masters[i].roll %></td>
                     <td><%= student_masters[i].class %></td>
                     <td><%= student_masters[i].section %></td>
-                    <td><%= student_masters[i].dob %></td>
+                    <!-- <td><%= student_masters[i].dob %></td> -->
+                    <td><%= moment(student_masters[i].dob).format( 'DD-MMM-YYYY') %></td>
                     <td><%= student_masters[i].sex %></td>
                     <td><%= student_masters[i].address.line1 + ' ' 
                         + student_masters[i].address.line2 +' '
@@ -60,11 +62,10 @@
                         + student_masters[i].address.pin %>
                     </td>
                     <td>
-                        <a href='/edit/<%= student_masters[i]._id %>'>Edit</a> | 
-                        <a href='/delete/<%= student_masters[i]._id %>'>Delete</a> |
-                        <a href='/show/<%= student_masters[i]._id %>'>Show</a> |
-                        <a href='/qrcode/<%= student_masters[i]._id %>' target="_blank">QRCode</a> 
-                       
+                        <a href='/edit-student/<%= student_masters[i]._id %>'><i class="fa fa-edit"></i></a> | 
+                        <a href='/delete/<%= student_masters[i]._id %>'><i class="fa fa-trash"></i></a> |
+                        <a href='/show/<%= student_masters[i]._id %>'><i class="fa fa-eye"></i></a> |
+                        <a href='/qrcode/<%= student_masters[i]._id %>' target="_blank"><i class="fa fa-qrcode"></i></a> 
 
                     </td>
                 </tr>

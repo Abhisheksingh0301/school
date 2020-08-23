@@ -27,7 +27,7 @@ mongoose.Promise=global.Promise;
 //mongoose.connect('mongodb://localhost:27017/school', {useNewUrlParser: true, useUnifiedTopology: true})
 mongoose.connect('mongodb+srv://abhijeet_04:abhijeet_04@cluster0-fddt1.azure.mongodb.net/school?retryWrites=true&w=majority',{
   useNewUrlParser: true
-//, useUnifiedTopology: true
+, useUnifiedTopology: true
 })
 
  .then(()=>console.log('Connection successful'))
