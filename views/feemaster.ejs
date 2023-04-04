@@ -14,6 +14,7 @@
                 <tr>
                     <th>Type of Fees</th>
                     <th>Amount</th>
+                    <th>Frequency</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -22,12 +23,16 @@
                     <% for (var i=0; i<fee_masters.length; i++){ %>
                     <td><%= fee_masters[i].fee_type %></td>
                     <td><%= fee_masters[i].amount %></td>
+                    <td><%= fee_masters[i].fee_freq %></td>
                     <td>
-                        <a href='/feemstedit/<%= fee_masters[i]._id %>'><i class="fa fa-edit"></i></a> | 
-                        <a href='/feemstdel/<%= fee_masters[i]._id %>'><i class="fa fa-trash"></i></a>
+                        <a href='/feemstedit/<%= fee_masters[i]._id %>'><i class="fa fa-edit"></i></a>
                     </td>
                 </tr>            
                 <% } %>
+                <tr>  
+                    <td colspan="4"><a href='/exporttocsv'>Generate fee data in excel:
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i></a></td>
+                </tr>
             </tbody>
         </table>
     <% } else { %>
@@ -44,6 +49,19 @@
                 </tr>
                 <tr><td><label for="txtfeetype">Fee type</label></td>
                     <td><input type="text" name="txtfeetype" id="txtfeetype" required class="form-control" autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <td><label for="feefreq">Fee Frequency</label></td>
+                    <td>
+                        <select id="feefreq" name="feefreq" class="form-control">
+                            <option value="0">Please select</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Quartely">Quartely</option>
+                            <option value="Half-yearly">Half-yearly</option>
+                            <option value="Yearly">Yearly</option>
+                            <option value="Never">Never</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="txtamount">Amount</label></td>

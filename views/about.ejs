@@ -1,22 +1,39 @@
 <%- include('header'); -%>
-<title><%= title %></title>
-<link rel='stylesheet' href='/stylesheets/style.css'>
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<script src="/js/jquery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<h1 id="myHeader"><%= title %></h1>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <h1 id="myHeader"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;<%= title %>
+    </h1>
 
-<h2>My Location</h2><br>
-<div class="mapouter">
-    <div class="gmap_canvas">
-    <iframe width="600" height="500" id="gmap_canvas" 
-    src="https://maps.google.com/maps?q=ojhaul&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="1" 
-    scrolling="no" marginheight="0" marginwidth="0">
-    </iframe>
-    <a href="https://123movies-to.net">123movies.</a>
-</div>
-    <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas 
-    {overflow:hidden;background:none!important;height:500px;width:600px;}
-    </style></div>
+    <h2>My Location</h2><br>
+    <div class="mapouter">
+        <div class="gmap_canvas">
+            <iframe width="600" height="500" id="gmap_canvas"
+                src="https://maps.google.com/maps?q=ojhaul&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="1"
+                scrolling="no" marginheight="0" marginwidth="0">
+            </iframe>
+            <a href="https://123movies-to.net">123movies.</a>
+        </div>
+        <style>
+            .mapouter {
+                position: relative;
+                text-align: right;
+                height: 500px;
+                width: 600px;
+            }
 
-<%- include('footer'); -%>
+            .gmap_canvas {
+                overflow: hidden;
+                background: none !important;
+                height: 500px;
+                width: 600px;
+            }
+        </style>
+    </div>
+
+    <%- include('footer'); -%>

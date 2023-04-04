@@ -7,7 +7,7 @@ var studinfo= new  Schema({
     fname:String,
     mname:String,
     mob:String,
-    roll:String,
+    roll:Number,
     class:String,
     section:String,
     dob:Date,
@@ -21,6 +21,9 @@ var studinfo= new  Schema({
         district:String,
         pin:String
     },
+    sesn:String,
+    adv_amt:{type:Number, default:0.0},
+    due_amt:{type:Number, default:0.0},
     Entry_Date:{type:Date, default:Date.now}
 });
 

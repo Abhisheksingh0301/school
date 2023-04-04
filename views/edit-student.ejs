@@ -17,6 +17,12 @@
         <input type="hidden" name="id" value="<%= records._id %>">
     <table>
         <tr>
+            <td><label for="txtsessn">Session:</label></td>
+            <td colspan="3">
+                <input id="txtsessn" type="text" value="<%= records.sesn %>" name="sesn" readonly class="form-control"  style="font-weight: bold; color:darkblue">
+            </td>
+        </tr>        
+        <tr>
             <td><label for="txtname">Name:</label></td>
             <td colspan="3">
                 <input id="txtname" type="text" value="<%= records.name %>" placeholder="Enter name" name="name" class="form-control" required>
@@ -45,12 +51,14 @@
             </td>
         </tr>
         <tr>
-            <td><label for="txtclass">Class:</label></td>            
+            <td><label for="cl">Class:</label></td>            
             <td>
                 <select id="cl" name="class_mst" class="form-control">
                     <option value="0"> Please select</option>
                     <% for (var i=0; i<class_masters.length; i++){ %>
-                        <option value= '<%= class_masters[i].class %>' <% if(records.class ==class_masters[i].class){ %> selected <% } %>> <%= class_masters[i].class %></option>
+                        <option value= '<%= class_masters[i].class %>' 
+                            <% if(records.class ==class_masters[i].class){ %> selected <% } %>> 
+                            <%= class_masters[i].class %></option>
                     <% } %>
                 </select>
                 <!-- <% if(records.etype =="Hourly"){ %> selected <% } %> -->

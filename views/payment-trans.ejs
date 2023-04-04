@@ -1,0 +1,185 @@
+<%- include('header'); -%>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+   
+    var tot=0;
+    var chkk=0;
+    function myFunction() {
+      //  var tot=document.getElementById("tfee").value;
+     //   tot=parseInt(tot) + parseInt(document.getElementById("gTotal").value);
+    //   document.getElementById("gTotal").value = document.getElementById("gTotal").value.toUpperCase();
+        var x=parseInt(document.getElementById("tfee").value);
+        chkk=parseInt(document.getElementsByName("feetp").value);
+        tot=parseInt(tot) + x + chkk ;
+
+        //document.getElementById("gTotal").innerHTML = tot;
+        document.write(tot);
+    }
+    $(function () {
+        $("#btnGet").click(function () {
+            //Create an Array.
+            var selected = new Array();
+            var tot=0
+            //Reference the CheckBoxes and insert the checked CheckBox value in Array.
+            $("#feez input[type=checkbox]:checked").each(function () {
+                //selected.push(this.value);
+               // tot=tot+selected.values(parseInt(this.values));
+               tot=tot+parseInt(this.value);
+            });
+ 
+            //Display the selected CheckBox values.
+            if (selected.length > 0) {
+                //alert("Selected values: " + selected.join(","));
+                document.getElementById("gTotal").innerHTML="ppp"+tot;
+            }
+            document.getElementById("gTotal").innerHTML="ppp"+tot;
+        });
+    });
+    </script>
+</head>
+
+<form action="/feeprocess/" method="POST">
+    <div class="container-fluid">
+        <h1 id="myHeader"><%= title %></h1>
+        <hr>
+        <input type="hidden" name="id" value="<%= student_masters._id %>">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>:</td>
+                <td><strong><%= student_masters.name%></strong></td>
+            </tr>
+            <tr>
+                <td>Class</td>
+                <td>:</td>
+                <td><%= student_masters.class%></td>
+            </tr>
+            <tr>
+                <td>Section</td>
+                <td>:</td>
+                <td><%= student_masters.section %></td>
+            </tr>
+            <tr>
+                <td>Roll</td>
+                <td>:</td>
+                <td><%= student_masters.roll %></td>
+            </tr>
+            <tr>
+                <td>Payment Type</td>
+                <td>:</td>
+                <td>
+                    <select id="pmt_mode" name="pmt_mode" class="form-control">
+                    <!-- <option value="0"> Please select</option> -->
+                        <option value= 1>Cash</option>
+                        <option value= 2>Cheque</option>
+                        <option value= 3>Card</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Tution fee</td>
+                <td>:</td>
+                <td>
+                    <!-- <label id="tfee"><%= class_masters.tution_fee %></label> -->
+                    <input type="text" id="tfee" name="tfee" class="form-control" onload="calculatetutionfee()"
+                     value=<%= due_fee %>>
+                     
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="amount" id="admnchk" value='<%= fee_masters[0].amount %>' checked >
+                    <%= fee_masters[0].fee_type %>
+                </td>
+                <td>:</td>
+                <td>
+                    <input type="text" name="admntxt" id="admntxt" class="form-control"
+                     value='<%= fee_masters[0].amount %>' width="500px">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="amount" id="devchk" value='<%= fee_masters[1].amount %>' checked>
+                    <%= fee_masters[1].fee_type %>
+                </td>
+                <td>:</td>
+                <td>
+                    <input type="text" name="devtxt" id="devtxt" class="form-control"
+                      value='<%= fee_masters[1].amount %>' width="500px">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="amount" id="labchk" value='<%= fee_masters[2].amount %>' checked>
+                    <%= fee_masters[2].fee_type %>
+                </td>
+                <td>:</td>
+                <td>
+                    <input type="text" name="labtxt" id="labtxt" class="form-control"
+                      value='<%= fee_masters[2].amount %>' width="500px">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="amount" id="transchk" value='<%= fee_masters[3].amount %>' checked>
+                    <%= fee_masters[3].fee_type %>
+                </td>
+                <td>:</td>
+                <td>
+                    <input type="text" name="transtxt" id="transtxt" class="form-control"
+                      value='<%= fee_masters[3].amount %>' width="500px">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="txtentry"> Entry Date
+                </td>
+                <td>:</td>
+                <td>
+                    <input type="date" name="txtentry" id="txtentry" class="form-control" required
+                    value="<%= moment(dt).format( 'YYYY-MM-DD') %>">
+                </td>
+            </tr>
+        </table>
+                   
+        <hr><br>
+        
+        <input type = "button" id = "btnGet" class="btn btn-primary" value = "Get" onclick="{myFunction()}">
+        <button type="submit" class="btn btn-success">
+            <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Submit
+        </button>
+        
+    </div>
+    
+    <input type="text" name="gTotal" id="gTotal" class="form-control"
+                      value='0' width="500px">
+</form>
+<script>
+    // function myFunction() {
+    //   document.getElementById("gTotal").value = document.getElementById("gTotal").value.toUpperCase();
+    // }
+    for (var i=0, len=amount.length; i<len; i++) {
+        amount[i].onclick = doSomething;
+        }
+        function doSomething() {
+        if ( this.checked ) {
+            // if checked ...
+            document.getElementById("gTotal").value=document.getElementsByName(this).value;
+            alert( this.value );
+        } else {
+            // if not checked ...
+        }
+    }
+
+    function calculatetutionfee(){
+        document.getElementById("tfee").value="test"
+    }
+</script>

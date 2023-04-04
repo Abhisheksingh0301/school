@@ -1,0 +1,75 @@
+<%- include('header'); -%>
+<title><%= title %></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel='stylesheet' href='/stylesheets/style.css'>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<h1 id="myHeader"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;<%= title %></h1>
+<div style="width: 60%; float:left;  margin:20px">
+    <table border="1" class="table table-hover">
+        <thead>
+            <tr>
+                <th>Sl</th>
+                <th>Session</th>
+                <th>Session duration</th>
+                <th>Default</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            <tr>
+                <% for (var i=0; i<session_master.length; i++){ %>
+                <td><%= i+1 %></td>
+                <td><%= session_master[i].sesn %></td>
+                <td><%= moment(session_master[i].start_date).format( 'DD-MMM-YYYY') %> &nbsp;to&nbsp;
+                    <%= moment(session_master[i].end_date).format( 'DD-MMM-YYYY') %> 
+                </td>
+                <td><strong><%= session_master[i].status %></strong></td>
+                <td>
+                    <a href='/sesndefault/<%= session_master[i]._id %>'><i class="fa fa-toggle-on"></i></a> |
+                    <a href='/sesndelete/<%= session_master[i]._id %>'><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>            
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<div style="width: 25%; float:left; margin:20px">
+    <form method="POST">
+        <div class="container-fluid">
+            <table border="1">
+                <tr>
+                    <th colspan="2">Add new records</th>
+                </tr>
+                <tr>
+                    <td><label for="txtsesn">Session</label></td>
+                    <td><input type="text" name="txtsesn" id="txtsesn" required class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><label for="txtstart">Start date</label></td>
+                    <td><input type="date" name="txtstart" id="txtstart" required class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><label for="txtend">End date</label></td>
+                    <td><input type="date" name="txtend" id="txtend" required class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><label for="tt1">Default</label></td>
+                        <td>
+                            <input id="tt1" type="radio" name="def" value="true" disabled> Yes &nbsp;&nbsp;
+                            <input id="tt2" type="radio" name="def" value="false" checked> No
+                        </td>  
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" class="btn btn-success" value="Add"></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+<div style="clear: both;"></div>
+<%- include('footer'); -%>

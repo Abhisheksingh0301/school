@@ -1,5 +1,5 @@
 <%- include('header'); -%>
-<% if(student_masters.length>0){ %>
+<!-- <% if(student_masters.length>0){ %> -->
     <html>
     <head>
         <title><%= title %></title>   
@@ -19,66 +19,113 @@
                 });
               });
             });
-            </script>
+        </script>
     </head>
         <body>
             <div class="container-fluid">
             <h1 id="myHeader"><%= headertext %></h1>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <h2 style="text-align:left;text-decoration:underline;color:#f00;font-family: 'Times New Roman', Times, serif">
+                            Search</h2>
+                    </div>
+                </div>
+                <div class="navbar">
+                        <div class="col-md-12">
+                            <form action="/search/" method="POST">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="text" id="txtname" name="txtname" class="form-control" 
+                                            placeholder="Enter Student name">
+                                        </td>
+                                        <td>
+                                            <input type="number" id="txtroll" name="txtroll" class="form-control" 
+                                            placeholder="Enter Student roll">
+                                        </td>
+                                        <td>
+                                            <select id="cl" name="class_mst" class="form-control">
+                                                <!-- <option value="0"></option> -->
+                                                <% for (var i=0; i<class_masters.length; i++){ %>
+                                                    <option value= '<%= class_masters[i].class %>'> <%= class_masters[i].class %></option>
+                                                <% } %>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                    </div>
+                <hr />
+                </div>
+                <input id="myInput" type="text" placeholder="Smart search.." class="form-control">
+            </nav>
             <hr>
-            <input id="myInput" type="text" placeholder="Search.." class="form-control">
+            
             <br>
             <table border="1" class="table table-hover">
                 <thead>
                     <tr>
                         <th>Sl</th>
+                        <th>Session</th>
                         <th>Name</th>
                         <th>Father's name</th>
-                        <th>Mobile</th>
                         <th>Roll</th>
                         <th>Class</th>
                         <th>Sec</th>
-                        <th>Date of Birth</th>
+                        <th>DOB</th>
                         <th>Sex</th>
                         <th>Address</th>   
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
+                <%if (student_masters.length >0){ i=0 %>
+                <% student_masters.forEach(function(row){ %>
                 <tr>
-                    <% for (var i=0; i<student_masters.length; i++){ %>
-                    <td><%= i+1 %></td>
-                    <td><%= student_masters[i].name %></td>
-                    <td><%= student_masters[i].fname %></td>
-                    <td><%= student_masters[i].mob %></td>
-                    <td><%= student_masters[i].roll %></td>
-                    <td><%= student_masters[i].class %></td>
-                    <td><%= student_masters[i].section %></td>
-                    <!-- <td><%= student_masters[i].dob %></td> -->
-                    <td><%= moment(student_masters[i].dob).format( 'DD-MMM-YYYY') %></td>
-                    <td><%= student_masters[i].sex %></td>
-                    <td><%= student_masters[i].address.line1 + ' ' 
-                        + student_masters[i].address.line2 +' '
-                        + student_masters[i].address.district + ' ' 
-                        + student_masters[i].address.pin %>
+                    <td><%= ++i %></td>
+                    <td><%= row.sesn %></td>
+                    <td><%= row.name %></td>
+                    <td><%= row.fname %></td>
+                    <td><%= row.roll %></td>
+                    <td><%= row.class %></td>
+                    <td><%= row.section %></td>
+                    <!-- <td><%= row.dob %></td> -->
+                    <td><%= moment(row.dob).format( 'DD-MMM-YY') %></td>
+                    <td><%= row.sex %></td>
+                    <td><%= row.address.line1 + ' ' 
+                        + row.address.line2 +' '
+                        + row.address.district + ' ' 
+                        + row.address.pin %>
                     </td>
                     <td>
-                        <a href='/edit-student/<%= student_masters[i]._id %>'><i class="fa fa-edit"></i></a> | 
-                        <a href='/delete/<%= student_masters[i]._id %>'><i class="fa fa-trash"></i></a> |
-                        <a href='/show/<%= student_masters[i]._id %>'><i class="fa fa-eye"></i></a> |
-                        <a href='/qrcode/<%= student_masters[i]._id %>' target="_blank"><i class="fa fa-qrcode"></i></a> 
+                        <a href='/edit-student/<%= row._id %>'><i class="fa fa-edit"></i></a> | 
+                        <a href='/delete/<%= row._id %>'><i class="fa fa-trash"></i></a> |
+                        <a href='/show/<%= row._id %>'><i class="fa fa-eye"></i></a> |
+                        <a href='/qrcode/<%= row._id %>' target="_blank"><i class="fa fa-qrcode"></i></a> |
+                        <a href='/payment/<%= row._id %>/class/<%= row.class %>'><i class="fa fa-inr" aria-hidden="true"></i></a> 
 
                     </td>
-                </tr>
-                
-                <% } %>
+                </tr>   
+                <% })}else{ %>
+                    <tr>
+                        <td colspan="6">No Record Found</td>
+                        
+                      </tr>
+                    <% } %>
             </tbody>
             </table>
         </div>
             </body>
         </html>
 
-<% } else { %>
+<!-- <% } else { %>
     No records found
-<% } %>
+<% } %> -->
 
 <%- include('footer'); -%>

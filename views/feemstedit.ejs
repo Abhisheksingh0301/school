@@ -17,11 +17,30 @@
                 </tr>
                 <tr>
                     <td><label for="txtfeetype" class="col-md-3 control-label">Fee Type</label></td>
-                    <td style="width:50%"><input type="text" class="form-control" name="txtfeetype" value="<%= records.fee_type %>" placeholder="Fee Type" required></td>
+                    <td style="width:50%"><input type="text" id="txtfeetype" class="form-control" name="txtfeetype" value="<%= records.fee_type %>" placeholder="Fee Type" required></td>
+                </tr>
+                <tr>
+                    <td><label for="txtfeefreq" class="col-md-3 control-label">Fee Freq.</label></td>
+                    <td>
+                        <select id="txtfeefreq" name="txtfeefreq" class="form-control">
+                            <option value="0"> Please select</option>
+                            
+                            <option value="Monthly"  
+                            <% if(records.fee_freq =="Monthly"){ %>  selected <% } %>>Monthly</option>
+                            <option value="Quartely" 
+                            <% if(records.fee_freq =="Quartely"){ %>  selected <% } %>>Quartely</option>
+                            <option value="Half-yearly" 
+                            <% if(records.fee_freq =="Half-yearly"){ %>  selected <% } %>>Half-yearly</option>
+                            <option value="Yearly" 
+                            <% if(records.fee_freq =="Yearly"){ %>  selected <% } %>>Yearly</option>
+                            <option value="Never"
+                            <% if(records.fee_freq =="Never"){ %>  selected <% } %>>Yearly</option>>Never</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="txtamount" class="col-md-3 control-label">Amount</label></td>
-                    <td style="width:50%"><input type="text"  class="form-control" name="txtamount" value="<%= records.amount %>" placeholder="Amount" required></td>
+                    <td style="width:50%"><input type="text" id="txtamount" class="form-control" name="txtamount" value="<%= records.amount %>" placeholder="Amount" required></td>
                 </tr>
                 <tr>
                     <td colspan="2">

@@ -13,6 +13,11 @@
                     <td><%= student_masters._id %></td>
                 </tr>
                 <tr>
+                    <td>Session</td>
+                    <td>:</td>
+                    <td style="font-weight: bold; color: darkblue;"><%= student_masters.sesn %></td>
+                </tr>
+                <tr>
                     <td>Name</td>
                     <td>:</td>
                     <td><%= student_masters.name%></td>
@@ -50,7 +55,7 @@
                 <tr>
                     <td>Date of Birth</td>
                     <td>:</td>
-                    <td><%= student_masters.dob %></td>
+                    <td><%= moment(student_masters.dob).format( 'DD-MMMM-YYYY') %></td>
                 </tr>
                 <tr>
                     <td>Sex</td>
@@ -90,7 +95,7 @@
                 <tr>
                     <td>Entry Date</td>
                     <td>:</td>
-                    <td><%= student_masters.Entry_Date %></td>
+                    <td><%= moment(student_masters.Entry_Date).format( 'DD-MMMM-YYYY') %></td>
                 </tr>
             </tbody>
         </table>

@@ -24,7 +24,14 @@ body {
   text-shadow: 2px 2px blue;
   /* text-decoration-color: red; */
 }
-
+input[type=text]:focus {
+  background-color: #eaeec9;
+  padding: 8px 15px;
+}
+input[type=number]:focus {
+  background-color: #eaeec9;
+  padding: 8px 15px;
+}
 footer {
   text-align: center;
   padding: 3px;
